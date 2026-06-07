@@ -15,6 +15,7 @@ set(SOURCES
     src/graphs/bfs.cpp
     src/graphs/dfs.cpp
     src/greedy/interval_scheduling.cpp
+    src/greedy/dijkstras.cpp
 )
 
 # Skapa den körbara filen

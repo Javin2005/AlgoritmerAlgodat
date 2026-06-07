@@ -101,4 +101,34 @@ void generateIntervalData(int n, int maxRange, string filename)
     cout << "Skapade " << n << " intervall i " << filename << endl;
 }
 
+void generateWeightedGraph(int n, int edgesPerNode, string filename)
+{
+    ofstream file(filename);
+    if (!file.is_open())
+    {
+        return;
+    }
+    file << n << endl;
+    random_device rd;
+    mt19937 g(rd());
+    uniform_int_distribution<int> nodeDist(0, n - 1);
+    uniform_int_distribution<int> weightDist(1, 20);
+
+    for (int i = 0; i < n; i++)
+    {
+        file << i << " " << edgesPerNode << " ";
+        for (int j = 0; j < edgesPerNode; j++)
+        {
+            int neighbor = nodeDist(g);
+            while (neighbor == i)
+                neighbor = nodeDist(g);
+
+            int weight = weightDist(g);
+            file << neighbor << " " << weight << " ";
+        }
+        file << endl;
+    }
+    file.close();
+    cout << "Viktad graf med " << n << " noder skapad i " << filename << endl;
+}
 #endif

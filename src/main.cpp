@@ -3,11 +3,37 @@
 #include "graphs/bfs.hpp"
 #include "graphs/dfs.hpp"
 #include "greedy/interval_scheduling.hpp"
+#include "greedy/dijkstras.hpp"
 #include "utils/generate_data.hpp"
 #include <chrono>
 
 #include <fstream>
 using namespace std;
+
+bool loadWeightedGraphData(string filename, int &n, vector<vector<Greedy::Edge>> &adj)
+{
+    ifstream file(filename);
+    if (!file.is_open())
+        return false;
+
+    file >> n;
+    adj.assign(n, vector<Greedy::Edge>());
+
+    for (int i = 0; i < n; i++)
+    {
+        int nodeID, numNeighbor;
+        file >> nodeID >> numNeighbor;
+        for (int j = 0; j < numNeighbor; j++)
+        {
+            int neighbor, weight;
+            file >> neighbor >> weight;
+            adj[nodeID].push_back({neighbor, weight});
+        }
+    }
+
+    file.close();
+    return true;
+}
 
 bool loadIntervalData(string filename, int &n, vector<Greedy::Interval> &intervals)
 {
@@ -91,6 +117,7 @@ int main()
     cout << "2. BFS (Breadth-First Search)" << endl;
     cout << "3. DFS (Depth-First Search)" << endl;
     cout << "4. Interval scheduling" << endl;
+    cout << "5. Dijkstras" << endl;
     cout << "Välj algoritm:" << endl;
 
     int choice;
@@ -224,6 +251,37 @@ int main()
             for (int i = 0; i < min((int)res.size(), 5); i++)
             {
                 cout << "  Intervall [" << res[i].start << " -> " << res[i].end << "]" << endl;
+            }
+        }
+    }
+
+    if (choice == 5)
+    {
+        cout << "Hur många noder i den viktade grafen: ";
+        int n_nodes;
+        cin >> n_nodes;
+
+        string path = "../data/greedy/large_dijkstra_test.txt";
+        generateWeightedGraph(n_nodes, 3, path);
+
+        int n;
+        vector<vector<Greedy::Edge>> adj;
+        if (loadWeightedGraphData(path, n, adj))
+        {
+            cout << "Viktad graf inläst! Kör dijkstras..." << endl;
+
+            auto start = chrono::high_resolution_clock::now();
+
+            auto res = Greedy::solveDijkstra(0, adj);
+
+            auto end = chrono::high_resolution_clock::now();
+            chrono::duration<double, milli> duration = end - start;
+
+            cout << "Dijkstra klar på " << duration.count() << " ms" << endl;
+            cout << "Kortaste avstånd från nod 0 till de första 10 noderna:" << endl;
+            for (int i = 0; i < min(n, 10); i++)
+            {
+                cout << " Nod " << i << ": " << (res.distances[i] == numeric_limits<int>::max() ? -1 : res.distances[i]) << endl;
             }
         }
     }
