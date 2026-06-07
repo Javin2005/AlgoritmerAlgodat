@@ -40,10 +40,35 @@ bool loadGaleShapleyData(string filename, int &n, vector<vector<int>> &prefA,
     return true;
 }
 
+bool loadGraphData(string filename, int &n, vector<vector<int>> &adj)
+{
+    ifstream file(filename);
+    if (!file.is_open())
+        return false;
+
+    file >> n;
+    adj.assign(n, vector<int>());
+
+    for (int i = 0; i < n; i++)
+    {
+        int nodeID, numNeighbors;
+        file >> nodeID >> numNeighbors;
+        for (int j = 0; j < numNeighbors; j++)
+        {
+            int neighbor;
+            file >> neighbor;
+            adj[nodeID].push_back(neighbor);
+        }
+    }
+    file.close();
+    return true;
+}
+
 int main()
 {
-    std::cout << "Välj algoritm:" << std::endl;
-    std::cout << "1. Gale-Shapley" << std::endl;
+    cout << "1. Gale-Shapley" << endl;
+    cout << "2. BFS (Breadth-First Search)" << endl;
+    cout << "Välj algoritm:" << endl;
 
     int choice;
     std::cin >> choice;
@@ -81,6 +106,23 @@ int main()
                 count++;
             }
             cout << "... och " << n - 5 << " till." << endl;
+        }
+    }
+
+    if (choice == 2)
+    {
+        cout << "Hur många noder ska grafen ha: ";
+        int n_nodes;
+        cin >> n_nodes;
+
+        string path = "../data/graphs/large_bfs_test.txt";
+        generateRandomGraph(n_nodes, 2, path);
+
+        int n;
+        vector<vector<int>> adj;
+        if (loadGraphData(path, n, adj))
+        {
+            cout << "Graf inläst! Redo att köra BFS." << endl;
         }
     }
 
