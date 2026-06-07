@@ -75,4 +75,30 @@ void generateRandomGraph(int n, int edgesPerNode, string filename)
     cout << "Graf med " << n << " noder skapad i " << filename << endl;
 }
 
+void generateIntervalData(int n, int maxRange, string filename)
+{
+
+    ofstream file(filename);
+    if (!file.is_open())
+    {
+        return;
+    }
+    file << n << endl;
+
+    random_device rd;
+    mt19937 g(rd());
+    uniform_int_distribution<int> startDist(0, maxRange - 2);
+
+    for (int i = 0; i < n; i++)
+    {
+        int start = startDist(g);
+        uniform_int_distribution<int> durationDist(1, 10);
+        int end = start + durationDist(g);
+        file << start << " " << end << endl;
+    }
+
+    file.close();
+    cout << "Skapade " << n << " intervall i " << filename << endl;
+}
+
 #endif

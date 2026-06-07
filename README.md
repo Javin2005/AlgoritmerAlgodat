@@ -39,8 +39,8 @@ Projektet använder CMake för att hantera byggprocessen.
 - [x] **Gale-Shapley:** Stabil matchning mellan två mängder. Inkluderar stöd för stora datamängder och tidtagning.
 
 ### Grafsökning (Pågående...)
-- [ ] **BFS (Breadth-First Search):** Hitta kortaste vägen i oviktade grafer.
-- [ ] **DFS (Depth-First Search):** Utforska grafer på djupet.
+- [x] **BFS (Breadth-First Search):** Hitta kortaste vägen i oviktade grafer.
+- [x] **DFS (Depth-First Search):** Utforska grafer på djupet.
 - [ ] **Tarjans algoritm:** Hitta starkt sammankopplade komponenter.
 
 ### Dynamisk Programmering (Kommande)

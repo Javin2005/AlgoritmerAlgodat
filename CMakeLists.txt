@@ -14,6 +14,7 @@ set(SOURCES
     src/stabil_matching/gale_shapley.cpp
     src/graphs/bfs.cpp
     src/graphs/dfs.cpp
+    src/greedy/interval_scheduling.cpp
 )
 
 # Skapa den körbara filen

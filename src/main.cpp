@@ -8,6 +8,31 @@
 #include <fstream>
 using namespace std;
 
+struct Interval
+{
+    int start;
+    int end;
+    int id;
+};
+
+bool loadIntervalData(string filename, int &n, vector<Interval> &intervals)
+{
+    ifstream file(filename);
+    if (!file.is_open())
+        return false;
+
+    file >> n;
+    intervals.clear();
+    for (int i = 0; i < n; i++)
+    {
+        int s, e;
+        file >> s >> e;
+        intervals.push_back({s, e, i});
+    }
+    file.close();
+    return true;
+}
+
 bool loadGaleShapleyData(string filename, int &n, vector<vector<int>> &prefA,
                          vector<vector<int>> &prefB)
 {
@@ -71,6 +96,7 @@ int main()
     cout << "1. Gale-Shapley" << endl;
     cout << "2. BFS (Breadth-First Search)" << endl;
     cout << "3. DFS (Depth-First Search)" << endl;
+    cout << "4. Interval scheduling" << endl;
     cout << "Välj algoritm:" << endl;
 
     int choice;
@@ -175,5 +201,21 @@ int main()
         }
     }
 
+    if (choice == 4)
+    {
+        cout << "Hur många intervall: ";
+        int n_intervals;
+        cin >> n_intervals;
+
+        string path = "../data/greedy/large_intervals_test.txt";
+        generateIntervalData(n_intervals, 100, path);
+
+        int n;
+        vector<Interval> intervals;
+        if (loadIntervalData(path, n, intervals))
+        {
+            cout << "Intervall inlästa!" << endl;
+        }
+    }
     return 0;
 }
