@@ -1,5 +1,6 @@
 #include <iostream>
 #include "stabil_matching/gale_shapley.hpp"
+#include "graphs/bfs.hpp"
 #include "utils/generate_data.hpp"
 #include <chrono>
 
@@ -68,6 +69,7 @@ int main()
 {
     cout << "1. Gale-Shapley" << endl;
     cout << "2. BFS (Breadth-First Search)" << endl;
+    cout << "3. DFS (Depth-First Search)" << endl;
     cout << "Välj algoritm:" << endl;
 
     int choice;
@@ -123,6 +125,45 @@ int main()
         if (loadGraphData(path, n, adj))
         {
             cout << "Graf inläst! Redo att köra BFS." << endl;
+            auto start = chrono::high_resolution_clock::now();
+
+            auto res = Graphs::solveBFS(0, adj);
+
+            auto end = chrono::high_resolution_clock::now();
+            chrono::duration<double, milli> duration = end - start;
+
+            cout << "BFS klar på " << duration.count() << " ms" << endl;
+            cout << "Besöksordning (första 10): ";
+            for (int i = 0; i < min((int)res.traversalOrder.size(), 10); i++)
+            {
+                cout << res.traversalOrder[i] << " ";
+            }
+            cout << endl;
+        }
+    }
+
+    if (choice == 3)
+    {
+        cout << "Hur många noder ska grafen ha: ";
+        int n_nodes;
+        cin >> n_nodes;
+
+        string path = "../data/graphs/large_bfs_test.txt";
+        generateRandomGraph(n_nodes, 2, path);
+
+        int n;
+        vector<vector<int>> adj;
+        if (loadGraphData(path, n, adj))
+        {
+            cout << "Graf inläst! Redo att köra BFS." << endl;
+
+            auto start = chrono::high_resolution_clock::now();
+
+            auto end = chrono::high_resolution_clock::now();
+            chrono::duration<double, milli> duration = end - start;
+
+            cout << "DFS klar på " << duration.count() << " ms" << endl;
+            cout << "Besöksordning (första 10): ";
         }
     }
 
