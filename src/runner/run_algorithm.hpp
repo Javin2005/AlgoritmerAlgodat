@@ -7,5 +7,6 @@ void runDFS();
 void runIntervalScheduling();
 void runDijkstras();
 void runKruskals();
+void runMergeSort();
 
 #endif

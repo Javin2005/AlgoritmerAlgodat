@@ -17,6 +17,7 @@ set(SOURCES
     src/greedy/interval_scheduling.cpp
     src/greedy/dijkstras.cpp
     src/greedy/kruskals.cpp
+    src/divide_and_conquer/mergesort.cpp
     src/runner/run_algorithm.cpp
 )
 

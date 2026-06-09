@@ -9,6 +9,7 @@
 #include "../graphs/dfs.hpp"
 #include "../greedy/interval_scheduling.hpp"
 #include "../greedy/dijkstras.hpp"
+#include "../divide_and_conquer/mergesort.hpp"
 #include "../utils/load_data.hpp"
 #include "../utils/generate_data.hpp"
 #include "../utils/timer.hpp"
@@ -167,6 +168,32 @@ void runKruskals()
         {
             cout << " Edge " << res.mstEdges[i].u << " -- " << res.mstEdges[i].v
                  << " (Weight: " << res.mstEdges[i].weight << ")" << endl;
+        }
+    }
+}
+void runMergeSort()
+{
+    string path = "../data/divide_and_conquer/large_list_test.txt";
+    int size;
+    cout << "\n--- MergeSort's Algorithm ---" << endl;
+    cout << "How many elements should the list have: ";
+    cin >> size;
+
+    generateRandomList(size, path);
+
+    vector<int> list;
+    if (loadListData(path, size, list))
+    {
+        DivideAndConquer::mergeSortResult res;
+        double time = measureExecution([&]()
+                                       { res = DivideAndConquer::solveMergeSort(list); });
+        cout << "MergeSort finished in " << time << " ms" << endl;
+        cout << "Amount of  divides " << res.amountOfDivides << endl;
+        cout << " The first 10 elements in sorted list: " << endl;
+
+        for (int i = 0; i < min((int)res.SortedList.size(), 10); i++)
+        {
+            cout << res.SortedList[i] << endl;
         }
     }
 }

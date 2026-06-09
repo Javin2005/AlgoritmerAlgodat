@@ -13,6 +13,12 @@ using namespace std;
 void generateLargeGaleShapley(int n, string filename)
 {
     ofstream file(filename);
+    if (!file.is_open())
+    {
+        cerr << "File could not be created: " << filename << endl;
+        return;
+    }
+
     file << n << endl;
 
     vector<int> prefs(n);
@@ -49,7 +55,10 @@ void generateRandomGraph(int n, int edgesPerNode, string filename)
 {
     ofstream file(filename);
     if (!file.is_open())
+    {
+        cerr << "File could not be created: " << filename << endl;
         return;
+    }
 
     file << n << endl;
 
@@ -81,6 +90,7 @@ void generateIntervalData(int n, int maxRange, string filename)
     ofstream file(filename);
     if (!file.is_open())
     {
+        cerr << "File could not be created: " << filename << endl;
         return;
     }
     file << n << endl;
@@ -106,6 +116,7 @@ void generateWeightedGraph(int n, int edgesPerNode, string filename)
     ofstream file(filename);
     if (!file.is_open())
     {
+        cerr << "File could not be created: " << filename << endl;
         return;
     }
     file << n << endl;
@@ -130,6 +141,28 @@ void generateWeightedGraph(int n, int edgesPerNode, string filename)
     }
     file.close();
     cout << "Weighted graf with " << n << " nodes created at " << filename << endl;
+}
+
+void generateRandomList(int n, string filename)
+{
+    ofstream file(filename);
+    if (!file.is_open())
+    {
+        cerr << "File could not be created: " << filename << endl;
+        return;
+    }
+
+    file << n << endl;
+    random_device rd;
+    mt19937 g(rd());
+    uniform_int_distribution<int> dist(0, 1000000000);
+
+    for (int i = 0; i < n; i++)
+    {
+        file << dist(g) << endl;
+    }
+    file.close();
+    cout << "Generated a randomized list of integers with " << n << " elements at " << filename << endl;
 }
 
 #endif

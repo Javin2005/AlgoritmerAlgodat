@@ -42,13 +42,13 @@ The project utilizes a modular structure for easy expansion:
 - [ ] **Borůvka's Algorithm:** Parallelizable MST.
 
 ### Divide and Conquer
-- [ ] **Mergesort:** Efficient $O(n \log n)$ sorting.
+- [x] **Mergesort:** Efficient $O(n \log n)$ sorting.
 - [ ] **Closest Pair of Points:** Finding the two closest points in a plane.
 - [ ] **Jarvis March / Graham Scan:** Convex hull calculation.
 - [ ] **Preparata-Hong:** Advanced D&C for convex hulls.
 
 ### Dynamic Programming (DP)
-- [x] **Weighted Interval Scheduling:** Maximize the value of intervals.
+- [] **Weighted Interval Scheduling:** Maximize the value of intervals.
 - [ ] **Subset Sum / Knapsack:** Optimization under limited capacity.
 - [ ] **Sequence Alignment:** DNA matching and string similarity.
 - [ ] **Bellman-Ford:** Shortest path with negative weights.

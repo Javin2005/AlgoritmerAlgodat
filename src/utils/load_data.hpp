@@ -15,6 +15,29 @@
 
 using namespace std;
 
+bool loadListData(string filename, int &n, vector<int> &list)
+{
+    ifstream file(filename);
+    if (!file.is_open())
+    {
+        cerr << "Could not open the file: " << filename << endl;
+        return false;
+    }
+
+    file >> n;
+    list.clear();
+    list.reserve(n);
+
+    for (int i = 0; i < n; i++)
+    {
+        int val;
+        file >> val;
+        list.push_back(val);
+    }
+    file.close();
+    return true;
+}
+
 bool loadEdgeListData(string filename, int &n, vector<Greedy::KruskalEdge> &edges)
 {
     ifstream file(filename);

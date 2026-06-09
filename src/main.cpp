@@ -14,6 +14,7 @@ int main()
         cout << "4. Interval Scheduling (Greedy)" << endl;
         cout << "5. Dijkstras (Shortest Path)" << endl;
         cout << "6. Kruskals (MST)" << endl;
+        cout << "7. MergeSort (Divide and Conquer)" << endl;
         cout << "0. Exit" << endl;
         cout << "Choose an algorithm: ";
 
@@ -43,6 +44,9 @@ int main()
 
         case 6:
             runKruskals();
+            break;
+        case 7:
+            runMergeSort();
             break;
         default:
             cout << "Invalid choice, try again." << endl;
