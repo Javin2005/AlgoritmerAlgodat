@@ -6,7 +6,7 @@
 
 namespace Greedy
 {
-    typedef std::pair<int, int> Edge;
+    typedef std::pair<int, int> DijkstraEdge;
 
     struct DijkstraResult
     {
@@ -14,6 +14,6 @@ namespace Greedy
         std::vector<int> predecessors;
     };
 
-    DijkstraResult solveDijkstra(int startNode, const std::vector<std::vector<Edge>> &adj);
+    DijkstraResult solveDijkstra(int startNode, const std::vector<std::vector<DijkstraEdge>> &adj);
 }
 #endif

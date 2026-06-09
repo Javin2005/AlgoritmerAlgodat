@@ -9,19 +9,52 @@
 #include "../graphs/dfs.hpp"
 #include "../greedy/interval_scheduling.hpp"
 #include "../greedy/dijkstras.hpp"
+#include "../greedy/kruskals.hpp"
 #include "generate_data.hpp"
 #include <fstream>
 
 using namespace std;
 
-bool loadWeightedGraphData(string filename, int &n, vector<vector<Greedy::Edge>> &adj)
+bool loadEdgeListData(string filename, int &n, vector<Greedy::KruskalEdge> &edges)
 {
     ifstream file(filename);
     if (!file.is_open())
+    {
+        cerr << "Could not open the file: " << filename << endl;
         return false;
-
+    }
     file >> n;
-    adj.assign(n, vector<Greedy::Edge>());
+    edges.clear();
+
+    int u, numNeighbors;
+
+    while (file >> u >> numNeighbors)
+    {
+        for (int i = 0; i < numNeighbors; i++)
+        {
+            int v, weight;
+            file >> v >> weight;
+
+            if (u < v)
+            {
+                edges.push_back({u, v, weight});
+            }
+        }
+    }
+    file.close();
+    return true;
+}
+
+bool loadWeightedGraphData(string filename, int &n, vector<vector<Greedy::DijkstraEdge>> &adj)
+{
+    ifstream file(filename);
+    if (!file.is_open())
+    {
+        cerr << "Could not open the file: " << filename << endl;
+        return false;
+    }
+    file >> n;
+    adj.assign(n, vector<Greedy::DijkstraEdge>());
 
     for (int i = 0; i < n; i++)
     {
@@ -43,8 +76,10 @@ bool loadIntervalData(string filename, int &n, vector<Greedy::Interval> &interva
 {
     ifstream file(filename);
     if (!file.is_open())
+    {
+        cerr << "Could not open the file: " << filename << endl;
         return false;
-
+    }
     file >> n;
     intervals.clear();
     for (int i = 0; i < n; i++)
@@ -63,7 +98,7 @@ bool loadGaleShapleyData(string filename, int &n, vector<vector<int>> &prefA,
     ifstream file(filename);
     if (!file.is_open())
     {
-        cerr << "Kunde inte öppna filen: " << filename << endl;
+        cerr << "Could not open the file: " << filename << endl;
         return false;
     }
 
@@ -95,8 +130,10 @@ bool loadGraphData(string filename, int &n, vector<vector<int>> &adj)
 {
     ifstream file(filename);
     if (!file.is_open())
+    {
+        cerr << "Could not open the file: " << filename << endl;
         return false;
-
+    }
     file >> n;
     adj.assign(n, vector<int>());
 

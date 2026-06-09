@@ -16,6 +16,7 @@ set(SOURCES
     src/graphs/dfs.cpp
     src/greedy/interval_scheduling.cpp
     src/greedy/dijkstras.cpp
+    src/greedy/kruskals.cpp
     src/runner/run_algorithm.cpp
 )
 

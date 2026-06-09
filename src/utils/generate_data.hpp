@@ -42,7 +42,7 @@ void generateLargeGaleShapley(int n, string filename)
     }
 
     file.close();
-    cout << "Filen " << filename << " med n=" << n << " har skapats!" << endl;
+    cout << "File " << filename << " with n=" << n << " has been created!" << endl;
 }
 
 void generateRandomGraph(int n, int edgesPerNode, string filename)
@@ -72,7 +72,7 @@ void generateRandomGraph(int n, int edgesPerNode, string filename)
         file << endl;
     }
     file.close();
-    cout << "Graf med " << n << " noder skapad i " << filename << endl;
+    cout << "Graph with " << n << " nodes created in " << filename << endl;
 }
 
 void generateIntervalData(int n, int maxRange, string filename)
@@ -98,7 +98,7 @@ void generateIntervalData(int n, int maxRange, string filename)
     }
 
     file.close();
-    cout << "Skapade " << n << " intervall i " << filename << endl;
+    cout << "Created " << n << " interval in " << filename << endl;
 }
 
 void generateWeightedGraph(int n, int edgesPerNode, string filename)
@@ -129,6 +129,7 @@ void generateWeightedGraph(int n, int edgesPerNode, string filename)
         file << endl;
     }
     file.close();
-    cout << "Viktad graf med " << n << " noder skapad i " << filename << endl;
+    cout << "Weighted graf with " << n << " nodes created at " << filename << endl;
 }
+
 #endif

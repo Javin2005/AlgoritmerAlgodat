@@ -6,5 +6,6 @@ void runBFS();
 void runDFS();
 void runIntervalScheduling();
 void runDijkstras();
+void runKruskals();
 
 #endif

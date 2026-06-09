@@ -123,7 +123,7 @@ void runDijkstras()
 
     generateWeightedGraph(n_nodes, 3, path);
 
-    vector<vector<Greedy::Edge>> adj;
+    vector<vector<Greedy::DijkstraEdge>> adj;
     if (loadWeightedGraphData(path, n, adj))
     {
         Greedy::DijkstraResult res;
@@ -140,6 +140,33 @@ void runDijkstras()
             else
                 cout << res.distances[i];
             cout << endl;
+        }
+    }
+}
+void runKruskals()
+{
+    string path = "../data/greedy/large_kruskals_test.txt";
+    int n_nodes, n;
+    cout << "\n--- Kruskal's Algorithm ---" << endl;
+    cout << "How many nodes: ";
+    cin >> n_nodes;
+
+    generateWeightedGraph(n_nodes, 3, path);
+
+    vector<Greedy::KruskalEdge> edg;
+    if (loadEdgeListData(path, n, edg))
+    {
+        Greedy::KruskalsResult res;
+        double time = measureExecution([&]()
+                                       { res = Greedy::solveKruskals(n, edg); });
+        cout << "Kruskals finished in " << time << " ms" << endl;
+        cout << "Total Weight of MST: " << res.totalWeight << endl;
+        cout << "The first 5 edges in MST: " << endl;
+
+        for (int i = 0; i < min((int)res.mstEdges.size(), 5); i++)
+        {
+            cout << " Edge " << res.mstEdges[i].u << " -- " << res.mstEdges[i].v
+                 << " (Weight: " << res.mstEdges[i].weight << ")" << endl;
         }
     }
 }

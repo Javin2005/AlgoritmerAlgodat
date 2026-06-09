@@ -7,7 +7,7 @@ using namespace std;
 
 namespace Greedy
 {
-    DijkstraResult solveDijkstra(int startNode, const vector<vector<Edge>> &adj)
+    DijkstraResult solveDijkstra(int startNode, const vector<vector<DijkstraEdge>> &adj)
     {
         int n = adj.size();
         DijkstraResult result;

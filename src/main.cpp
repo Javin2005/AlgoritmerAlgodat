@@ -13,6 +13,7 @@ int main()
         cout << "3. DFS (Depth-First Search)" << endl;
         cout << "4. Interval Scheduling (Greedy)" << endl;
         cout << "5. Dijkstras (Shortest Path)" << endl;
+        cout << "6. Kruskals (MST)" << endl;
         cout << "0. Exit" << endl;
         cout << "Choose an algorithm: ";
 
@@ -38,6 +39,10 @@ int main()
             break;
         case 5:
             runDijkstras();
+            break;
+
+        case 6:
+            runKruskals();
             break;
         default:
             cout << "Invalid choice, try again." << endl;
