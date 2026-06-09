@@ -1,79 +1,79 @@
 # C++ Algorithm Laboratory
 
-Detta projekt är en praktisk resa genom algoritmer och datastrukturer, implementerade från grunden i modern C++. Syftet är dubbelt: att bemästra fundamentala algoritmer och att lära sig professionell C++-arkitektur på macOS.
+This project is a practical exampel algorithms and data structures, implemented from scratch in modern C++. The purpose is twofold: to master fundamental algorithms and to learn professional C++ architecture on macOS.
 
-## Projektmål
-- **Algoritmisk förståelse:** Implementera allt från stabila matchningar till komplex nätverksflöden.
-- **Modern C++:** Använda C++17/20, lambdas, templates och effektiv minneshantering.
-- **Arkitektur:** Hålla koden ren och modulär (Separation of Concerns).
-- **Benchmarking:** Verifiera tidskomplexitet med precisionstimer (`std::chrono`).
+## Project Goals
+- **Algorithmic Understanding:** Implement everything from stable matching to complex network flows.
+- **Modern C++:** Utilize C++17/20, lambdas, templates, and efficient memory management.
+- **Architecture:** Maintain clean and modular code (Separation of Concerns).
+- **Benchmarking:** Verify time complexity using precision timers (`std::chrono`).
 
-## Systemarkitektur
-Projektet använder en modulär struktur för att enkelt kunna expandera:
-- **`src/runner/`**: Hanterar användarens val och exekvering av algoritmer.
-- **`src/utils/timer.hpp`**: En generisk template-baserad timer för benchmarking av valfri kod.
-- **`src/utils/load_data.hpp`**: Centraliserad logik för att läsa in komplexa grafer och listor.
+## System Architecture
+The project utilizes a modular structure for easy expansion:
+- **`src/runner/`**: Handles user selection and the execution of algorithms.
+- **`src/utils/timer.hpp`**: A generic template-based timer for benchmarking any code segment.
+- **`src/utils/load_data.hpp`**: Centralized logic for importing complex graphs and lists.
 
-## Struktur
-- `src/` - Källkod uppdelad i logiska kategorier.
-- `data/` - Testfiler och generatorer för benchmarking.
-- `bin/` - Kompilerade körbara filer.
-- `build/` - CMake byggmiljö.
-
----
-
-## Algoritmer & Roadmap
-
-### Introduktion och Matchning
-- [x] **Gale-Shapley:** Stabil matchning mellan två mängder.
-
-### Grafsökning och Konnektivitet
-- [x] **BFS (Breadth-First Search):** Kortaste vägen i oviktade grafer.
-- [x] **DFS (Depth-First Search):** Djuputforskning av grafer.
-- [ ] **Tarjans algoritm:** Hitta starkt sammankopplade komponenter (SCC).
-- [ ] **Lengauer-Tarjan:** Avancerad dominator-analys i grafer.
-
-### Giriga algoritmer (Greedy)
-- [x] **Interval Scheduling:** Maximera antal icke-överlappande intervall.
-- [x] **Dijkstras algoritm:** Kortaste vägen i viktade grafer.
-- [ ] **Earliest Deadline First:** Minimera maximal försening.
-- [ ] **Kruskals algoritm:** Minimalt uppspännande träd (MST) via Union-Find.
-- [ ] **Jarniks (Prims) algoritm:** MST genom successiv expansion.
-- [ ] **Borůvkas algoritm:** Parallelliserbar MST.
-
-### Söndra och härska (Divide and Conquer)
-- [ ] **Mergesort:** Effektiv $O(n \log n)$ sortering.
-- [ ] **Closest pair of points:** Hitta de två närmaste punkterna i ett plan.
-- [ ] **Jarvis March / Graham Scan:** Beräkning av konvext hölje.
-- [ ] **Preparata-Hong:** Avancerad D&C för konvext hölje.
-
-### Dynamisk programmering (DP)
-- [ ] **Weighted Interval Scheduling:** Maximera värde på intervall.
-- [ ] **Subset Sum / Knapsack:** Optimering under begränsad kapacitet.
-- [ ] **Sequence Alignment:** DNA-matchning och stränglikhet.
-- [ ] **Bellman-Ford:** Kortaste vägen med negativa vikter.
-
-### Nätverksflöde
-- [ ] **Ford-Fulkerson / Edmonds-Karp:** Maxflöde i nätverk.
-- [ ] **Goldberg-Tarjan (Preflow-Push):** Effektiv maxflödesalgoritm.
-- [ ] **Hopcroft-Karp:** Maximal matchning i bipartita grafer.
-
-### Optimering och Kompilatorteknik
-- [ ] **Simplex-algoritmen:** Linjärprogrammering.
-- [ ] **Branch-and-Bound:** Beskärning av sökträd i svåra optimeringsproblem.
-- [ ] **Unit Propagation:** SAT-solving teknik.
-- [ ] **Operator Strength Reduction (OSR):** Kompilatoroptimering via Tarjans SCC.
+## Structure
+- `src/` – Source code divided into logical categories.
+- `data/` – Test files and generators for benchmarking.
+- `bin/` – Compiled executables.
+- `build/` – CMake build environment.
 
 ---
 
-## Installation & Körning
-1. **Bygg projektet:**
+## Algorithms & Roadmap
+
+### Introduction and Matching
+- [x] **Gale-Shapley:** Stable matching between two sets.
+
+### Graph Search and Connectivity
+- [x] **BFS (Breadth-First Search):** Shortest path in unweighted graphs.
+- [x] **DFS (Depth-First Search):** Depth exploration of graphs.
+- [ ] **Tarjan's Algorithm:** Finding Strongly Connected Components (SCC).
+- [ ] **Lengauer-Tarjan:** Advanced dominator analysis in graphs.
+
+### Greedy Algorithms
+- [x] **Interval Scheduling:** Maximize the number of non-overlapping intervals.
+- [x] **Dijkstra's Algorithm:** Shortest path in weighted graphs.
+- [ ] **Earliest Deadline First:** Minimize maximum lateness.
+- [x] **Kruskal's Algorithm:** Minimum Spanning Tree (MST) via Union-Find.
+- [ ] **Jarnik's (Prim's) Algorithm:** MST through successive expansion.
+- [ ] **Borůvka's Algorithm:** Parallelizable MST.
+
+### Divide and Conquer
+- [ ] **Mergesort:** Efficient $O(n \log n)$ sorting.
+- [ ] **Closest Pair of Points:** Finding the two closest points in a plane.
+- [ ] **Jarvis March / Graham Scan:** Convex hull calculation.
+- [ ] **Preparata-Hong:** Advanced D&C for convex hulls.
+
+### Dynamic Programming (DP)
+- [x] **Weighted Interval Scheduling:** Maximize the value of intervals.
+- [ ] **Subset Sum / Knapsack:** Optimization under limited capacity.
+- [ ] **Sequence Alignment:** DNA matching and string similarity.
+- [ ] **Bellman-Ford:** Shortest path with negative weights.
+
+### Network Flow
+- [ ] **Ford-Fulkerson / Edmonds-Karp:** Maximum flow in networks.
+- [ ] **Goldberg-Tarjan (Preflow-Push):** Efficient maximum flow algorithm.
+- [ ] **Hopcroft-Karp:** Maximum matching in bipartite graphs.
+
+### Optimization and Compiler Technology
+- [ ] **Simplex Algorithm:** Linear programming.
+- [ ] **Branch-and-Bound:** Pruning search trees in difficult optimization problems.
+- [ ] **Unit Propagation:** SAT-solving technique.
+- [ ] **Operator Strength Reduction (OSR):** Compiler optimization via Tarjan's SCC.
+
+---
+
+## Installation & Execution
+1. **Build the project:**
    ```bash
    mkdir build && cd build
    cmake ..
    make
    ```
-2. **Kör laboratoriet:**
+2. **Run the laboratory:**
    ```bash
    ../bin/AlgoRunner
    ```
