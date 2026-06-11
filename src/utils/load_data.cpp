@@ -15,6 +15,27 @@ static bool openFile(ifstream &file, const string &filename)
     return true;
 }
 
+bool loadPrimsData(const string &filename, int &n, vector<vector<Greedy::PrimsEdge>> &adj)
+{
+    ifstream file;
+    if (!openFile(file, filename))
+    {
+        return false;
+    }
+    file >> n;
+    adj.assign(n, vector<Greedy::PrimsEdge>());
+    int u, numNeighbors, v, weight;
+    while (file >> u >> numNeighbors)
+    {
+        for (int i = 0; i < numNeighbors; i++)
+        {
+            file >> v >> weight;
+            adj[u].push_back({u, v, weight});
+        }
+    }
+    return true;
+}
+
 bool loadPointPlane(const string &filename, int &n, vector<DivideAndConquer::Point> &points)
 {
     ifstream file;

@@ -19,6 +19,7 @@ set(SOURCES
     src/greedy/interval_scheduling.cpp
     src/greedy/dijkstras.cpp
     src/greedy/kruskals.cpp
+    src/greedy/prims.cpp
     src/divide_and_conquer/mergesort.cpp
     src/divide_and_conquer/closest_point.cpp
     src/runner/run_algorithm.cpp

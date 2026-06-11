@@ -7,6 +7,7 @@ void runDFS();
 void runIntervalScheduling();
 void runDijkstras();
 void runKruskals();
+void runPrims();
 void runMergeSort();
 void runClosestPoints();
 

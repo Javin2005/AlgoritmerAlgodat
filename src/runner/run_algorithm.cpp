@@ -12,6 +12,7 @@
 #include "../greedy/interval_scheduling.hpp"
 #include "../greedy/dijkstras.hpp"
 #include "../greedy/kruskals.hpp"
+#include "../greedy/prims.hpp"
 #include "../divide_and_conquer/mergesort.hpp"
 #include "../divide_and_conquer/closest_point.hpp"
 #include "../utils/load_data.hpp"
@@ -192,6 +193,20 @@ void runKruskals()
         printStat("MST Total Weight", res.totalWeight);
         printStat("Execution time", time, "ms");
     }
+}
+
+void runPrims()
+{
+    printSectionHeader("PRIM'S MINIMUM SPANNING TREE");
+    string path = "../data/greedy/large_prims_test.txt";
+    int n, n_nodes;
+
+    cout << " ENter number of nodes: ";
+    cin >> n_nodes;
+
+    generateWeightedGraph(n_nodes, 3, path);
+
+    vector <
 }
 
 void runMergeSort()
